@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form action="./valida-essa-merda-ai">
+    <!--
+        Modifiers
+        readonly = somente leitura
+        disabled = desativado
+    -->
+        <p>
+            <label for="itext">Text:</label>
+            <input name="itext" id="itext" type="text" />
+        </p>
+        <p>
+            <label for="itext2">Read:</label>
+            <input readonly name="itext2" id="itext2" type="text" value="abcd" />
+        </p>
+        <p>
+            <label for="inum">Age:</label>
+            <input name="inum" id="inum" type="number" />
+        </p>
+        <p>
+            <label for="idate">Date:</label>
+            <input name="idate" id="idate" type="date" />
+        </p>
+        <p>
+            <label for="ifile">File:</label>
+            <input name="ifile" id="ifile" type="file" />
+        </p>
+        <p>
+            <label for="ipw">Password:</label>
+            <input name="ipw" id="ipw" type="password" />
+        </p>
+
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </form>
+</body>
+</html>
