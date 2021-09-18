@@ -8,7 +8,7 @@ let output = {
   out_deadline: document.getElementById("out_deadline"),
   out_monthly_fees: document.getElementById("out_monthly_fees"),
   out_acc_fees: document.getElementById("out_acc_fees"),
-  out_installments: document.getElementById("out_installments")
+  out_installments: document.getElementById("out_installments"),
 };
 
 const get_value = () => {
@@ -43,7 +43,7 @@ const simulate = () => {
   let value = get_value();
   let deadlines = get_deadlines();
   let fees = get_fees();
-  const amortization = value / deadlines.month
+  const amortization = value / deadlines.month;
 
   const installments = new Array(deadlines.month)
     .fill(null)
@@ -65,25 +65,34 @@ const simulate = () => {
   change_value_of_output(output.out_monthly_fees, fees.month);
   change_value_of_output(output.out_acc_fees, acc_fees.toFixed(2));
 
-  const first_five_installments = installments.slice(0, 5)
+  const first_five_installments = installments.slice(0, 5);
 
   // remove all old rows, if exists
   first_five_installments.forEach((val, index, arr) => {
-      output.out_installments.deleteRow(-1)
-  })
+    output.out_installments.deleteRow(-1);
+  });
 
   // add all new rows, and populate with data
   first_five_installments.forEach((val, index, arr) => {
-    let row = output.out_installments.insertRow(-1)
-    
-    let index_cell = row.insertCell(0)
-    let amortization_cell = row.insertCell(1)
-    let fees_cell = row.insertCell(2)
-    let total_cell = row.insertCell(3)
+    let row = output.out_installments.insertRow(-1);
 
-    index_cell.innerHTML = index + 1
-    amortization_cell.innerHTML = val.amortization.toFixed(2)
-    fees_cell.innerHTML = val.fees.toFixed(2)
-    total_cell.innerHTML = val.total.toFixed(2)
-})
+    let index_cell = row.insertCell(0);
+    let amortization_cell = row.insertCell(1);
+    let fees_cell = row.insertCell(2);
+    let total_cell = row.insertCell(3);
+
+    index_cell.innerHTML = index + 1;
+    amortization_cell.innerHTML = val.amortization.toFixed(2);
+    fees_cell.innerHTML = val.fees.toFixed(2);
+    total_cell.innerHTML = val.total.toFixed(2);
+  });
 };
+
+const reset = () => {
+  inputs.in_value.value = 200_000;
+  inputs.in_deadline.value = 20;
+  inputs.in_fees.value = 0.08;
+  simulate();
+};
+
+simulate();
