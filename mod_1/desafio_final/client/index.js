@@ -37,7 +37,6 @@ function onRoleFilterChange() {
     document.querySelectorAll("input[type=checkbox]:checked")
   );
   let roles_ids = selectedNodes.map((val) => +val.value);
-  console.log(roles_ids);
   updateTable({
     ...STORE,
     employees: STORE.employees.filter((emp) =>

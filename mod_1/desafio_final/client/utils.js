@@ -20,12 +20,15 @@ export const initializeStore = async () => {
 export const initializeRolesFilter = ({ roles, rolesFilterElement }) => {
   const mapToCheckboxWithLabel = (role) => {
     let label = document.createElement("label");
-    label.textContent = role.name;
-
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.value = role.id;
     label.appendChild(checkbox);
+
+    let span = document.createElement("span");
+    span.textContent = role.name;
+    label.appendChild(span);
+
     return label;
   };
 
