@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Employees Management</title>
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <select id="sortBy">
+          <option value="0">Name (ascending)</option>
+          <option value="1">Name (descending)</option>
+          <option value="2">Salary (ascending)</option>
+          <option value="3">Salary (descending)</option>
+        </select>
+        <div id="rolesFilter"></div>
+      </div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>Name</td>
+              <td>Role</td>
+              <td>Salary</td>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
