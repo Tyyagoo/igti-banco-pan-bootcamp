@@ -54,6 +54,6 @@ export const updateTable = ({ employees, tableElement }) => {
     salary_cell.textContent = emp.salary;
   };
 
-  removeAllChildren(updateTable);
+  removeAllChildren(tableElement);
   employees.forEach(insertToTableRow);
 };
