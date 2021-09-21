@@ -14,6 +14,7 @@ export const initializeStore = async () => {
     sortByElement: document.getElementById("sortBy"),
     rolesFilterElement: document.getElementById("rolesFilter"),
     tableElement: document.getElementById("tableBody"),
+    quantityElement: document.getElementById("emp_quantity"),
   };
 };
 
@@ -43,7 +44,12 @@ export const removeAllChildren = (element) => {
   }
 };
 
-export const updateTable = ({ employees, tableElement }) => {
+export const updateTable = ({
+  employees,
+  tableElement,
+  quantityElement,
+  quantity,
+}) => {
   const insertToTableRow = (emp) => {
     let row = tableElement.insertRow(-1);
     let id_cell = row.insertCell(0);
@@ -59,4 +65,5 @@ export const updateTable = ({ employees, tableElement }) => {
 
   removeAllChildren(tableElement);
   employees.forEach(insertToTableRow);
+  quantityElement.textContent = quantity;
 };

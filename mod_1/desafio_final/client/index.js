@@ -37,11 +37,14 @@ function onRoleFilterChange() {
     document.querySelectorAll("input[type=checkbox]:checked")
   );
   let roles_ids = selectedNodes.map((val) => +val.value);
+  let employees = STORE.employees.filter((emp) =>
+    hasSomeRole(emp.role_id, roles_ids)
+  );
+
   updateTable({
     ...STORE,
-    employees: STORE.employees.filter((emp) =>
-      hasSomeRole(emp.role_id, roles_ids)
-    ),
+    employees,
+    quantity: employees.length,
   });
 }
 
