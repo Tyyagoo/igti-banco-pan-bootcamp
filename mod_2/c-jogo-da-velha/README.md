@@ -2,7 +2,7 @@
 
 ===================================
 
-[ ] - Criar components ticTacToe <br>
+[x] - Criar components ticTacToe <br>
 [ ] - Criar protótipo da interface com: <br>
 
 1. Indicação do jogador atual <br>
