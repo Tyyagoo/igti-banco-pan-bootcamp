@@ -1,0 +1,5 @@
+<span style="font-weight: bold;">{{title}}</span>: 
+<span style="color: var(--color);">{{value}}</span>
+<br>
+<button (click)="increment()" [disabled]="value >= 5">Increment</button>
+<button (click)="decrement()" [disabled]="value <= -5">Decrement</button>
