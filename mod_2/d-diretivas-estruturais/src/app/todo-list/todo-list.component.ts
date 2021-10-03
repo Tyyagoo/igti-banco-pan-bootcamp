@@ -14,7 +14,7 @@ export class TodoListComponent {
       todoFactory('Task1', 'Make something', false),
       todoFactory('Task2', 'Go outside', false),
       todoFactory('Task3', 'Code something', false),
-      todoFactory('Completed', 'Sleep', true),
+      todoFactory('Completed', 'Sleep', false),
     ];
   }
 
@@ -28,5 +28,17 @@ export class TodoListComponent {
 
   deleteTask(task: TodoItem) {
     this.list = this.list.filter((t) => t != task);
+  }
+
+  filterTasks(filter: (task: TodoItem) => boolean) {
+    return this.list.filter(filter);
+  }
+
+  countPendingTasks() {
+    return this.filterTasks((task) => !task.done).length;
+  }
+
+  countCompletedTasks() {
+    return this.filterTasks((task) => task.done).length;
   }
 }

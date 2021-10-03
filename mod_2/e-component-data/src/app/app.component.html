@@ -1,18 +1,24 @@
-<h1>Movies</h1>
-<table>
-  <thead>
-    <th>Title</th>
-    <th>Rating</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let movie of movies">
-      <td>{{ movie.title }}</td>
-      <td>
+<app-panel title="Movies" style="display: block">
+  <table>
+    <thead>
+      <th>Title</th>
+      <th>Rating</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies">
+        <td>{{ movie.title }}</td>
+        <td>
+          <!--
         <app-movie-rating
           [rating]="movie.rating"
           (ratingChange)="movie.rating = $event"
         ></app-movie-rating>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        -->
+          <app-movie-rating [(rating)]="movie.rating"></app-movie-rating>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</app-panel>
+
+<app-panel title="Series" style="display: block"></app-panel>
