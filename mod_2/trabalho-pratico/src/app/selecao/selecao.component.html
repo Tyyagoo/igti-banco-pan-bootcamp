@@ -1,0 +1,27 @@
+<div class="header">
+  <h3>{{ titulo }}</h3>
+  <span *ngIf="escolhaAte > 1">Escolha até {{ escolhaAte }}</span>
+  <span *ngIf="escolhaAte > 1 && selectedIndexes.length > 0">
+    ({{ selectedIndexes.length }} selecionado{{
+      selectedIndexes.length !== 1 ? "s" : ""
+    }})
+  </span>
+</div>
+
+<div class="options">
+  <form>
+    <label
+      *ngFor="let opc of opcoes; let i = index"
+      [class.disabled]="checkIsDisabled(i)"
+      [class.selected]="isSelected(i)"
+    >
+      <input
+        [type]="escolhaAte > 1 ? 'checkbox' : 'radio'"
+        [name]="escolhaAte > 1 ? 'in_ckbox' : 'in_rad'"
+        (change)="onChange(i)"
+        [disabled]="checkIsDisabled(i)"
+      />
+      {{ opc }}
+    </label>
+  </form>
+</div>
