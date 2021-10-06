@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 export type Contact = {
   id: number;
@@ -8,7 +9,7 @@ export type Contact = {
   date: Date;
 };
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = environment.API_URL;
 
 @Injectable({
   providedIn: 'root',
