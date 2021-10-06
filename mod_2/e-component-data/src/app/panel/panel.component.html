@@ -1,5 +1,0 @@
-<h2 style="display: inline">{{ title }}</h2>
-<button *ngIf="!expanded" (click)="toggleExpanded()">+</button>
-<button *ngIf="expanded" (click)="toggleExpanded()">-</button>
-<!--Append the children of table to the html-->
-<ng-content *ngIf="expanded"></ng-content>
