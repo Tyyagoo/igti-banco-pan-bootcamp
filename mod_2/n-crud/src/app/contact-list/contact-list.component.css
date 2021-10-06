@@ -1,0 +1,11 @@
+.create-button-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 0px 16px 16px 0px;
+}
+
+:host {
+  display: block;
+  padding-bottom: 80px;
+}

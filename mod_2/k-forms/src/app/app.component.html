@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>Name:
+    <input type="text" formControlName="name" />
+  </label>
+  <div *ngIf="form.get('name')?.errors?.required">
+    O seu nome não pode estar vazio!</div>
+  <label>Password:
+    <input type="password" formControlName="password" />
+  </label>
+  <div *ngIf="form.get('password')?.errors?.required">
+    A sua senha não pode estar vazia!</div>
+  <div *ngIf="form.get('password')?.errors?.minLength">
+    A sua senha deve ter mais que 8 chars!</div>
+  <div *ngIf="form.get('password')?.errors?.passwordStrength?.hasUpperCase">
+    A sua senha deve ter caracteres maiusculos.</div>
+  <div *ngIf="form.get('password')?.errors?.passwordStrength?.hasLowerCase">
+    A sua senha deve ter caracteres minusculos.</div>
+  <div *ngIf="form.get('password')?.errors?.passwordStrength?.hasNumeric">
+    A sua senha deve ter numeros.</div>
+  <input type="submit" value="Save" [disabled]="form.status !== 'VALID'" />
+</form>
+
+<p>
+  {{form.status}}
+</p>
+
+<p>
+  {{form.value | json}}
+</p>

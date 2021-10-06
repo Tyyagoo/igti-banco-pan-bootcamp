@@ -1,0 +1,37 @@
+<div>
+  <label>Exercício: <input type="text" [(ngModel)]="exercise.name" /></label>
+  <label
+    >Duração: <input type="number" [(ngModel)]="exercise.duration"
+  /></label>
+  <label
+    >Repetições: <input type="number" [(ngModel)]="exercise.times"
+  /></label>
+  <label
+    >Preparação: <input type="number" [(ngModel)]="exercise.preparation"
+  /></label>
+  <label>Descanso: <input type="number" [(ngModel)]="exercise.rest" /></label>
+  <button (click)="addExercise()">Salvar</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exercício</th>
+      <th>Duração</th>
+      <th>Repetições</th>
+      <th>Preparação</th>
+      <th>Descanso</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let exer of exercises; let i = index">
+      <td>{{ exer.name }}</td>
+      <td>{{ exer.duration }}</td>
+      <td>{{ exer.times }}</td>
+      <td>{{ exer.preparation }}</td>
+      <td>{{ exer.rest }}</td>
+      <td><button (click)="deleteExercise(i)">x</button></td>
+    </tr>
+  </tbody>
+</table>

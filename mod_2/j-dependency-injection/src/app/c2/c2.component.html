@@ -1,0 +1,9 @@
+<p>c2 works!</p>
+<div>
+    <ul>
+        <li *ngFor="let item of todoListService.items">
+            {{item}}
+        </li>
+    </ul>
+</div>
+<button (click)="todoListService.add('C2')">Add some item</button>
