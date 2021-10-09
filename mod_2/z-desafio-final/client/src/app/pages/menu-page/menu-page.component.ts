@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { FoodService } from 'src/app/services/food/food.service';
 import { Food } from 'src/app/types';
@@ -12,7 +13,8 @@ export class MenuPageComponent implements OnInit {
   foodList: Food[] = [];
   constructor(
     private foodService: FoodService,
-    private cartService: CartService
+    private cartService: CartService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -39,5 +41,13 @@ export class MenuPageComponent implements OnInit {
 
   addToCart(food: Food) {
     this.cartService.addFood(food);
+    this._openSnackBar(
+      `${food.description} adicionado(a) ao carrinho!`,
+      'Esconder'
+    );
+  }
+
+  private _openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, { duration: 2000 });
   }
 }

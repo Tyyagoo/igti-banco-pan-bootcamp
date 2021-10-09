@@ -32,8 +32,11 @@
         <span>R$ {{getTotalPrice() | number:'1.2-2'}}</span>
     </div>
     <div class="flex-container">
-        <button mat-raised-button routerLink="/">Incluir mais itens</button>
-        <button mat-raised-button (click)="clear()">Limpar</button>
-        <button mat-raised-button color="accent">Concluir</button>
+        <div class="flex-container" style="width: fit-content;">
+            <button mat-raised-button routerLink="/" style="margin: 0px 5px;">Incluir mais itens</button>
+            <button mat-raised-button (click)="clear()" [disabled]="getCount() < 1"
+                style="margin: 0px 5px;">Limpar</button>
+        </div>
+        <button mat-raised-button color="accent" [disabled]="getCount() < 1" (click)="finish()">Concluir</button>
     </div>
 </footer>
