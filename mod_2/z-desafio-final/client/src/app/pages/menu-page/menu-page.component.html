@@ -1,0 +1,35 @@
+<header>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Cardápio</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="flex-container">
+            <a routerLink="/cart">
+                <mat-icon [matBadge]="getCartQuantity()" matBadgeColor="warn">shopping_cart</mat-icon>
+            </a>
+
+            <span>
+                R$ {{getCartPrice() | number:'1.2-2'}}
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</header>
+
+<main>
+    <mat-list>
+        <ng-container *ngFor="let category of getCategories()">
+            <div mat-subheader style="color: #E91E63;">{{category}}</div>
+            <mat-list-item *ngFor="let food of getFoodByCategory(category)" (click)="addToCart(food)" class="clickable">
+                <div class="flex-container">
+                    <span>{{food.description}}</span>
+                    <span>R$ {{food.price | number:'1.2-2'}}</span>
+                </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </mat-list>
+</main>
+
+<footer>
+
+</footer>

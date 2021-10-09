@@ -1,0 +1,39 @@
+<header>
+    <mat-toolbar color="primary">
+        <span>Pedido</span>
+    </mat-toolbar>
+</header>
+
+<main>
+    <ng-container *ngIf="getCount() < 1">
+        <span>
+            Seu pedido está vazio.
+        </span>
+    </ng-container>
+    <ng-container *ngIf="getCount() > 0">
+        <mat-list>
+            <mat-list-item *ngFor="let fw of getList()">
+                <div class="flex-container">
+                    <span>
+                        {{fw.food.description}}
+                    </span>
+                    <span>
+                        {{fw.quantity}} x {{fw.food.price | number:'1.2-2'}}
+                    </span>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </ng-container>
+</main>
+
+<footer>
+    <div class="flex-container">
+        <span>Total</span>
+        <span>R$ {{getTotalPrice() | number:'1.2-2'}}</span>
+    </div>
+    <div class="flex-container">
+        <button mat-raised-button routerLink="/">Incluir mais itens</button>
+        <button mat-raised-button (click)="clear()">Limpar</button>
+        <button mat-raised-button color="accent">Concluir</button>
+    </div>
+</footer>
