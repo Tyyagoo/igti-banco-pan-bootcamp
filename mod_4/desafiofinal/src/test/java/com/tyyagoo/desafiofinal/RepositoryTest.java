@@ -36,7 +36,7 @@ public class RepositoryTest {
                         "Konrad Barbie",
                         "Amparo Chibuike",
                         "Kylie Ashkii")
-                .map(name -> new Salesman(name, Set.of()))
+                .map(Salesman::new)
                 .map(salesmanRepository::save)
                 .collect(Collectors.toList());
 
@@ -55,7 +55,7 @@ public class RepositoryTest {
         List<Sale> sales = new Random()
                 .doubles(5.00, 15000.00)
                 .limit(100)
-                .mapToObj(price -> new Sale(salesmanRandomizer.get(salesmans), price))
+                .mapToObj(price -> new Sale(price, new Date(), salesmanRandomizer.get(salesmans)))
                 .map(saleRepository::save)
                 .collect(Collectors.toList());
 
@@ -63,7 +63,6 @@ public class RepositoryTest {
 
         salesmanRepository.findAll().forEach(salesman -> {
             /*
-            System.out.println(salesman);
             long numberOfSales = salesman.getSales().size();
             System.out.println(salesman.getSales());
             long salesInDb = saleRepository.countBySellerId(salesman.getId());
