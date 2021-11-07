@@ -3,10 +3,8 @@ package com.tyyagoo.desafiofinal.salesman;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,10 +25,7 @@ public class SalesmanController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createOne(@Valid SalesmanPayloadDTO payload, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(bindingResult.getFieldErrors());
-        }
+    public ResponseEntity<Salesman> createOne(SalesmanPayloadDTO payload) {
         return ResponseEntity.ok(salesmanService.create(payload.getName()));
     }
 
