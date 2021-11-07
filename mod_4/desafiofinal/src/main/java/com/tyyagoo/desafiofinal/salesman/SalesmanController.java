@@ -24,6 +24,11 @@ public class SalesmanController {
         return ResponseEntity.ok(salesmanService.getAll());
     }
 
+    @GetMapping(path = "/rank")
+    public ResponseEntity<List<Ranksman>> getRanked() {
+        return ResponseEntity.ok(salesmanService.getRank());
+    }
+
     @GetMapping(path = "/{id}")
     public ResponseEntity<SalesmanDTO> getOne(@PathVariable Long id) {
         return ResponseEntity.ok(salesmanService.getById(id));
