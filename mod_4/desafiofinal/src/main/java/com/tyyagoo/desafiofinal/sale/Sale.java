@@ -24,11 +24,9 @@ public class Sale {
     @JoinColumn(name = "seller_id", nullable = false)
     private Salesman seller;
 
-    public Sale() { }
-
-    public Sale(Double value, Date date, Salesman seller) {
+    public Sale(Double value, Salesman seller) {
         this.value = value;
-        this.date = date;
+        this.date = new Date();
         this.seller = seller;
     }
 

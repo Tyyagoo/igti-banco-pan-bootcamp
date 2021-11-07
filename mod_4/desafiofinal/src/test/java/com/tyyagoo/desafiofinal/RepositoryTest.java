@@ -55,7 +55,7 @@ public class RepositoryTest {
         List<Sale> sales = new Random()
                 .doubles(5.00, 15000.00)
                 .limit(100)
-                .mapToObj(price -> new Sale(price, new Date(), salesmanRandomizer.get(salesmans)))
+                .mapToObj(price -> new Sale(price, salesmanRandomizer.get(salesmans)))
                 .map(saleRepository::save)
                 .collect(Collectors.toList());
 
