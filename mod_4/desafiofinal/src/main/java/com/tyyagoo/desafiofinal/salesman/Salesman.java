@@ -3,6 +3,8 @@ package com.tyyagoo.desafiofinal.salesman;
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 import com.tyyagoo.desafiofinal.sale.Sale;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -61,12 +63,12 @@ public class Salesman {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Salesman salesman = (Salesman) o;
-        return Objects.equals(id, salesman.id) && Objects.equals(name, salesman.name) && Objects.equals(sales, salesman.sales);
+        return Objects.equals(id, salesman.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, sales);
+        return Objects.hash(id);
     }
 
     @Override
@@ -74,7 +76,7 @@ public class Salesman {
         return "Salesman{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", sales=" + sales +
+                ", sales=" + sales.stream().map(Sale::getId).map(String::valueOf).collect(Collectors.toList()) +
                 '}';
     }
 }

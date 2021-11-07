@@ -24,6 +24,8 @@ public class Sale {
     @JoinColumn(name = "seller_id", nullable = false)
     private Salesman seller;
 
+    public Sale() { };
+
     public Sale(Double value, Salesman seller) {
         this.value = value;
         this.date = new Date();
@@ -67,12 +69,12 @@ public class Sale {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sale sale = (Sale) o;
-        return Objects.equals(id, sale.id) && Objects.equals(value, sale.value) && Objects.equals(date, sale.date) && Objects.equals(seller, sale.seller);
+        return id.equals(sale.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, value, date, seller);
+        return Objects.hash(id);
     }
 
     @Override
@@ -81,7 +83,7 @@ public class Sale {
                 "id=" + id +
                 ", value=" + value +
                 ", date=" + date +
-                ", seller_id=" + seller.getId() +
+                ", sellerId=" + seller.getId() +
                 '}';
     }
 }

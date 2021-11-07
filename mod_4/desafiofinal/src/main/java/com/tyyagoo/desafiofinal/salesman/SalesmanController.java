@@ -20,17 +20,17 @@ public class SalesmanController {
     private SaleService saleService;
 
     @GetMapping
-    public ResponseEntity<List<Salesman>> getAll() {
+    public ResponseEntity<List<SalesmanDTO>> getAll() {
         return ResponseEntity.ok(salesmanService.getAll());
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Salesman> getOne(@PathVariable Long id) {
+    public ResponseEntity<SalesmanDTO> getOne(@PathVariable Long id) {
         return ResponseEntity.ok(salesmanService.getById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Salesman> createOne(@RequestBody SalesmanPayloadDTO payload) {
+    public ResponseEntity<SalesmanDTO> createOne(@RequestBody SalesmanDTO payload) {
         return ResponseEntity.ok(salesmanService.create(payload.getName()));
     }
 
@@ -40,12 +40,12 @@ public class SalesmanController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PostMapping
+    @PostMapping(path = "/{sellerId}/sales")
     public ResponseEntity<SaleDTO> addSale(@PathVariable Long sellerId, @RequestBody SaleDTO saleDTO) {
         return ResponseEntity.ok(saleService.create(sellerId, saleDTO));
     }
 
-    @GetMapping
+    @GetMapping(path = "/{sellerId}/sales")
     public ResponseEntity<List<SaleDTO>> salesFromSeller(@PathVariable Long sellerId) {
         return ResponseEntity.ok(saleService.getAllBySeller(sellerId));
     }
