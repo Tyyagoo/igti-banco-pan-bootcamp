@@ -5,16 +5,12 @@
 </div>
 
 <mat-list>
-  <mat-list-item *ngIf="pedidoService.itens.length == 0"
-    >Seu pedido está vazio.</mat-list-item
-  >
+  <mat-list-item *ngIf="pedidoService.itens.length == 0">Seu pedido está vazio.</mat-list-item>
   <ng-container *ngFor="let item of pedidoService.itens">
     <mat-list-item>
       <span class="flex-1">{{ item.produto.descricao }}</span>
-      <span
-        >{{ item.quantidade }} &times; R$
-        {{ item.produto.preco | number: "0.2-2" }}</span
-      >
+      <span>{{ item.quantidade }} &times; R$
+        {{ item.produto.preco | number: "0.2-2" }}</span>
     </mat-list-item>
   </ng-container>
   <mat-list-item>
@@ -30,5 +26,5 @@
     Limpar
   </button>
   <span class="flex-1"></span>
-  <button mat-raised-button color="accent">Concluir</button>
+  <button mat-raised-button color="accent" (click)="pedidoService.fazerPedido()">Concluir</button>
 </mat-toolbar>

@@ -16,13 +16,15 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { AcompanheSeuPedidoComponent } from './acompanhe-seu-pedido/acompanhe-seu-pedido.component';
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
     AppComponent,
     CardapioComponent,
-    PedidoComponent
+    PedidoComponent,
+    AcompanheSeuPedidoComponent
   ],
   imports: [
     BrowserModule,
