@@ -27,8 +27,8 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<Mapped> getOrders() {
-        return ResponseEntity.ok().body(new Mapped(service.getAll()));
+    public ResponseEntity<Listed> getOrders() {
+        return ResponseEntity.ok().body(new Listed(service.getAll()));
     }
 
     @PutMapping(path = "/{id}")

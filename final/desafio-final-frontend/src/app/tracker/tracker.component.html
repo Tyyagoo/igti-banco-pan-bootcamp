@@ -1,0 +1,39 @@
+<div class="header">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Acompanhe seu pedido</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+<ng-container *ngIf="order === undefined">
+    Carregando o seu pedido...
+</ng-container>
+
+<ng-container *ngIf="order !== undefined">
+    <mat-list>
+        <mat-list-item>
+            <span><strong>Número do pedido:</strong> {{ order.id }}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span><strong>Data e hora do pedido:</strong> {{ order.datetime | date }}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span><strong>Situação:</strong> {{ getValueFromOrderStateKey(order.state) }}</span>
+        </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <mat-list>
+        <mat-list-item *ngFor="let item of order.items">
+            <span class="flex-1">{{ item.product.description }}</span>
+            <span class="fs-small">{{ item.amount }} x R$ {{ item.product.price | number: "0.2-2" }}</span>
+        </mat-list-item>
+
+        <mat-list-item>
+            <span class="flex-1"><strong>Total:</strong></span>
+            <span class="fs-small"><strong>R$ {{ totalPrice | number: "0.2-2" }}</strong></span>
+        </mat-list-item>
+    </mat-list>
+</ng-container>
+
+<a routerLink="/menu" mat-raised-button>Voltar para o cardápio</a>

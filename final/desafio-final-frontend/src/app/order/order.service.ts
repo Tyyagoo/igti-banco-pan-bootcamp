@@ -13,7 +13,7 @@ export class OrderService {
 
   finishOrder() {
     this.httpClient
-      .post<IOrder>("http://localhost:8080/orders", this.items)
+      .post<IOrder>("http://localhost:8080/orders", { items: this.items })
       .subscribe((obv) => this.router.navigateByUrl(`/orders/${obv.id}`));
   }
 

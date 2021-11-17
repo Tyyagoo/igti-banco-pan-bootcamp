@@ -1,0 +1,24 @@
+<div class="header">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Gerenciar pedidos</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+<ng-container *ngIf="sortedOrders === undefined">
+    Carregando pedidos...
+</ng-container>
+
+<ng-container *ngIf="sortedOrders !== undefined && sortedOrders.length === 0">
+    Nenhum pedido.
+</ng-container>
+
+<ng-container *ngIf="sortedOrders !== undefined && sortedOrders.length > 0">
+    <mat-action-list>
+        <a mat-list-item *ngFor="let order of sortedOrders;" [routerLink]="'./' + order.id">
+            <span class="flex-1">Pedido #{{ order.id }}</span>
+            <span class="fs-small">{{ order.state }}</span>
+        </a>
+    </mat-action-list>
+</ng-container>

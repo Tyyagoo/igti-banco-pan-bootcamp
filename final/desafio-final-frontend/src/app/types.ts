@@ -17,8 +17,18 @@ export interface ICart {
   items: Array<IOrderItem>;
 }
 
+export enum OrderState {
+  WAITING = "Em espera",
+  PREPARING = "Em preparação",
+  DELIVERING = "Saiu para entrega",
+  DELIVERED = "Entregue",
+}
 export interface IOrder extends ICart {
   id: number;
   datetime: string;
-  state: string;
+  state: OrderState;
+}
+
+export interface IListedOrders {
+  orders: Array<IOrder>;
 }

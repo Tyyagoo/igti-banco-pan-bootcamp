@@ -8,10 +8,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class OrderDto {
 
@@ -47,13 +44,11 @@ public class OrderDto {
     }
 
     @Data
-    public static class Mapped {
-        @JsonValue
-        private Map<Integer, Order> orders;
+    public static class Listed {
+        private List<Order> orders;
 
-        public Mapped(List<Order> orders) {
-              this.orders = orders.stream()
-                      .collect(Collectors.toMap(Order::getId, Function.identity()));
+        public Listed(List<Order> orders) {
+              this.orders = orders;
         }
     }
 }
