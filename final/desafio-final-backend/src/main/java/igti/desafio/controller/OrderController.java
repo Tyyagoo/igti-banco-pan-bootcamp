@@ -31,7 +31,7 @@ public class OrderController {
         return ResponseEntity.ok().body(new Mapped(service.getAll()));
     }
 
-    @PutMapping
+    @PutMapping(path = "/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable Integer id, @RequestBody Update payload) {
         return service.update(id, payload)
                 .map(ResponseEntity.ok()::body)
