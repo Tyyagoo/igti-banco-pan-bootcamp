@@ -1,7 +1,7 @@
 
 -- Este script é executado automaticamente pelo Spring Boot para inserir dados iniciais no banco de dados.
 
-insert into produto values
+insert into tb_product values
 (1, 'Sanduiches de Boi', 'Hamburguer', 14.5),
 (2, 'Sanduiches de Boi', 'X - Burguer', 16.0),
 (3, 'Sanduiches de Boi', 'X - Egg Burguer', 17.0),
