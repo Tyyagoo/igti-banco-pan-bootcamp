@@ -21,7 +21,7 @@ import javax.persistence.SequenceGenerator;
 @Data
 public class Order {
 
-	private enum State {
+	public enum State {
 		WAITING("Aguardando"),
 		PREPARING("Em preparação"),
 		DELIVERING("Saiu para entrega"),
@@ -49,7 +49,7 @@ public class Order {
 	private Integer id;
 
 	@Column(name = "datetime")
-	private LocalDateTime dataHora;
+	private LocalDateTime datetime;
 
 	@Column(name = "state")
 	private State state;
